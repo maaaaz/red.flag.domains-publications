@@ -37,5 +37,5 @@ jobs:
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add -A
-        git commit -m "scraping $(date --date="yesterday" '+%Y/%m')"
+        git commit -m "scraping bot - $(date --date="yesterday" '+%Y/%m/%d')"
         git push
