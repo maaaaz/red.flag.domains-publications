@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"ameli-gestion.fr","","","","",""
+"caisse-epargne-particuliers.fr","162.55.139.42","24940","162.55.0.0/16","HETZNER-AS, DE","DE"
+"la-banquepostales.fr","178.62.12.13","14061","178.62.0.0/18","DIGITALOCEAN-ASN, US","US"
+"netflix-aides.fr","","","","",""
+"paypal-reconfiguration.fr","","","","",""
+"portail-ameli.fr","","","","",""
+"supportapplestore.fr","208.91.197.91","40034","208.91.197.0/24","CONFLUENCE-NETWORK-INC, VG","VG"

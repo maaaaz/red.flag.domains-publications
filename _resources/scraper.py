@@ -90,7 +90,7 @@ def generate_csv(results, now):
                 output_line = [entry_enriched['fqdn'], entry_ip, entry_asn, entry_ip_prefix, entry_owner, entry_cc]
                 spamwriter.writerow(output_line) 
                 
-        print("[+] %s written to output file" % len(results))
+        print("[+] %s entries written to output file" % len(results))
     
     return
 

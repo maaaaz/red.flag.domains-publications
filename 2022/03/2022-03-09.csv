@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"banque-populaires.fr","","","","",""
+"caisse-epargnes.fr","","","","",""
+"client-caisse-epargne.fr","","","","",""
+"espace-caisse-epargne.fr","212.193.30.139","211252","212.193.30.0/24","AS_DELIS, US","CZ"
+"moncmbs.fr","","","","",""
+"online-banquepostal.fr","","","","",""
+"secur-pass-activation.fr","","","","",""

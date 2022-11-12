@@ -1,0 +1,7 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"cora-service.fr","92.222.148.199","16276","92.222.0.0/16","OVH, FR","FR"
+"dgfipca3.fr","87.98.150.35","16276","87.98.128.0/17","OVH, FR","FR"
+"paiementscuriseleboncoin914.fr","","","","",""
+"paiementsecuriseleboncoin547.fr","","","","",""
+"secureclient.fr","","","","",""
+"securitychecklogin.fr","81.88.57.68","39729","81.88.48.0/20","REGISTER-AS, IT","IT"

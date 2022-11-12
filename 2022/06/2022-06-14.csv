@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"assurance-maladie-france.fr","","","","",""
+"brigade-nationale-de-la-police-judiciaire.fr","","","","",""
+"caisssedesdepots.fr","162.19.26.186","16276","162.19.0.0/17","OVH, FR","FR"
+"francesantegouv.fr","","","","",""
+"moncompteformation-validation.fr","217.160.0.156","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"partic-orangeinfo.fr","193.233.48.51","210352","193.233.48.0/24","SERVER4-AS, RU","RU"
+"xn--santgouv-e1a.fr","","","","",""

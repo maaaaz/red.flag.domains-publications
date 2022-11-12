@@ -1,0 +1,4 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"connection-ameli.fr","188.165.84.111","16276","188.165.0.0/16","OVH, FR","FR"
+"redirect-ameli.fr","188.165.84.111","16276","188.165.0.0/16","OVH, FR","FR"
+"securi-passs.fr","35.204.150.5","396982","35.204.144.0/20","GOOGLE-CLOUD-PLATFORM, US","US"

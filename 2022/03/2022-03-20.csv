@@ -1,0 +1,4 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"brigade-nationale-de-la-police-judiciaire.fr","","","","",""
+"iban-paypal.fr","","","","",""
+"service-sante-ameli.fr","192.3.12.143","36352","192.3.0.0/20","AS-COLOCROSSING, US","US"

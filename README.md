@@ -1,5 +1,5 @@
-https://red.flag.domains publications
-==============================================
+https://red.flag.domains daily publications with enriched data
+========================================================
 
 Description
 -----------

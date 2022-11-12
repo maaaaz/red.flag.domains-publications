@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"accueil-ameli.fr","5.8.8.94","34665","5.8.8.0/23","PINDC-AS, RU","RU"
+"amazon-comptes.fr","45.76.44.169","20473","45.76.44.0/22","AS-CHOOPA, US","US"
+"ameli-clientcartevitale.fr","","","","",""
+"avertissement-ameli.fr","","","","",""
+"facebookconnect.fr","213.186.33.5","16276","213.186.32.0/19","OVH, FR","FR"
+"netflix-verification-login.fr","","","","",""
+"www-banquepopulairee.fr","","","","",""
