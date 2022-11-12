@@ -1,9 +1,8 @@
 name: Daily scraping
 
-on: [push]
-  #schedule:
-    # * is a special character in YAML so you have to quote this string
-    #- cron:  '10 00 * * *'
+on: 
+  schedule:
+    - cron:  '10 00 * * *'
 
 permissions:
   contents: write
@@ -30,11 +29,11 @@ jobs:
         cd $GITHUB_WORKSPACE
         mkdir -p $(date --date="yesterday" '+%Y/%m')
 
-    - name: Scrape the previous day publication
+    - name: Scrape the previous day publication and push to the repository
       run: |
         cd $GITHUB_WORKSPACE
         python $GITHUB_WORKSPACE/_resources/scraper.py 
-        git config user.name github-actions
+        git config user.name scraping-bot
         git config user.email github-actions@github.com
         git add -A
         git commit -m "scraping bot - $(date --date="yesterday" '+%Y/%m/%d')"
