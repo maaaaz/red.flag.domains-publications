@@ -1,8 +1,8 @@
 name: Daily scraping
 
-on: 
-  schedule:
-    - cron:  '10 00 * * *'
+on: [push]
+  #schedule:
+    #- cron:  '10 00 * * *'
 
 permissions:
   contents: write
