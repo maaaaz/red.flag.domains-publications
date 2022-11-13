@@ -31,6 +31,6 @@ jobs:
         
       run: |
         cd $GITHUB_WORKSPACE
-        csvcut -x -c 'fqdn' $GITHUB_WORKSPACE/$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')|tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
+        csvcut -x -c 'fqdn' $GITHUB_WORKSPACE/$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')| sed 1d| tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
         ls -al /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
         python $GITHUB_WORKSPACE/_resources/submitter.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
