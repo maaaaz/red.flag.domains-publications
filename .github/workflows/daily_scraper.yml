@@ -35,6 +35,7 @@ jobs:
         python $GITHUB_WORKSPACE/_resources/scraper.py 
         git config user.name scraping-bot
         git config user.email github-actions@github.com
+        git pull
         git add -A
         git commit -m "scraping bot - $(date --date="yesterday" '+%Y/%m/%d')"
         git push
