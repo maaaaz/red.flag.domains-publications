@@ -27,7 +27,7 @@ jobs:
     
     - name: Submit the previous day publication to CRDF
       env: 
-        SECRET_CRDF_API_KEY: ${{ secrets.SECRET_CRDF_API_KEY}}
+        SECRET_CRDF_API_KEY: ${{ secrets.SECRET_CRDF_API_KEY }}
         
       run: |
         cd $GITHUB_WORKSPACE
