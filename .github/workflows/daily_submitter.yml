@@ -1,4 +1,4 @@
-name: Daily scraping
+name: Daily submitting
 
 on: 
   schedule:
