@@ -1,8 +1,8 @@
 name: Daily submitting
 
-on: 
-  schedule:
-    - cron:  '10 3 * * *'
+on: [push]
+  #schedule:
+    #- cron:  '10 3 * * *'
 
 permissions:
   contents: read
