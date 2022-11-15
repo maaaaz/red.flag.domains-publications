@@ -22,6 +22,8 @@ def crdf_check(options):
     retval = os.EX_OK
     
     url_endpoint = "https://threatcenter.crdf.fr/api/v0/submit_get_info.json"
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
+
     refs = []
     
     if os.path.isfile(options.input_file):
@@ -33,7 +35,7 @@ def crdf_check(options):
             
             for ref in refs:
                 req_data = {"token": os.environ['SECRET_CRDF_API_KEY'], "ref": ref}
-                req = requests.post(url_endpoint, json=req_data)
+                req = requests.post(url_endpoint, headers=headers, json=req_data)
                 print("[+] CRDF ref '%s'" % ref)
                 
                 if req.ok:
@@ -59,6 +61,8 @@ def crdf_submit(options):
     retval = os.EX_OK
     
     url_endpoint = "https://threatcenter.crdf.fr/api/v0/submit_url.json"
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
+    
     malicious_url = []
     
     if os.path.isfile(options.input_file):
@@ -70,7 +74,7 @@ def crdf_submit(options):
             #pprint.pprint(malicious_url)
             
             req_data = {"token": os.environ['SECRET_CRDF_API_KEY'], "urls": malicious_url}
-            req = requests.post(url_endpoint, json=req_data)
+            req = requests.post(url_endpoint, headers=headers, json=req_data)
             
             if req.ok:
                 req_json = req.json()
