@@ -51,8 +51,12 @@ def scrape(now):
         data = []
         
         for p_paragraph in data_scraped:
-            data = data + p_paragraph.text_content().replace('[','').replace(']','').splitlines()
-        
+            items = p_paragraph.text_content().splitlines()
+            
+            for item in items:
+                item = item.replace('[','').replace(']','')
+                data.append(re.search('^(?P<fqdn>[^\s]*)[\s]?', item).group('fqdn'))
+                
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futs = [ (target, executor.submit(functools.partial(enrich, target)))
                 for target in data ]

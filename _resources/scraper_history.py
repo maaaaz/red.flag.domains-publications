@@ -19,7 +19,13 @@ from lxml.html.soupparser import fromstring as fromstringhtml
 from lxml.etree import fromstring as fromstringxml
 
 # Script version
-VERSION = '1.0'
+VERSION = '1.1'
+
+# Options definition
+parser = argparse.ArgumentParser(description="version: " + VERSION)
+parser.add_argument('-i', '--input-url', help='Input red.flag.domains URL', default = None)
+parser.add_argument('-f', '--input-file', help='Input file as a list of newline-separated red.flag.domains URL', default = None)
+parser.add_argument('-o', '--output-dir', help='Output directory (default: current working directory)', default = os.getcwd())
 
 def enrich(entry):
     #print("[+] %s" % entry)
@@ -80,7 +86,7 @@ def generate_csv(year, month, day, results, outdir, link):
     
     return
 
-def scrape(url):
+def scrape(url, output_dir):
     p_date = re.compile('(?P<year>[\d]{4})-(?P<month>[\d]{2})-(?P<day>[\d]{2})')
     
     result = {}
@@ -92,7 +98,11 @@ def scrape(url):
         data = []
         
         for p_paragraph in data_scraped:
-            data = data + p_paragraph.text_content().replace('[','').replace(']','').splitlines()
+            items = p_paragraph.text_content().splitlines()
+            
+            for item in items:
+                item = item.replace('[','').replace(']','')
+                data.append(re.search('^(?P<fqdn>[^\s]*)[\s]?', item).group('fqdn'))
         
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futs = [ (target, executor.submit(functools.partial(enrich, target)))
@@ -112,15 +122,31 @@ def scrape(url):
             
     return result
 
-# Main
-output_dir = os.getcwd()
-p_date = re.compile('(?P<year>[\d]{4})-(?P<month>[\d]{2})-(?P<day>[\d]{2})')
 
-rss_url = 'https://red.flag.domains/index.xml'
-links_data = fromstringxml(requests.get(rss_url).content).xpath('//item/guid[contains(text(),"posts")]/text()')
-
-if links_data:
-    print("[+] %s posts\n" % len(links_data))
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        results = [ (link, executor.submit(functools.partial(scrape, link)))
-                for link in links_data ]
+def main():
+    global parser
+    options = parser.parse_args()
+    
+    links_data = []
+    
+    if options.input_url:
+        links_data = [options.input_url]
+        
+    elif options.input_file:
+        with open(options.input_file, mode='r', encoding='utf-8') as fd_input:
+            links_data = fd_input.read().splitlines()
+    
+    else:
+        rss_url = 'https://red.flag.domains/index.xml'
+        links_data = fromstringxml(requests.get(rss_url).content).xpath('//item/guid[contains(text(),"posts")]/text()')
+    
+    if links_data:
+        print("[+] %s posts\n" % len(links_data))
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            results = [ (link, executor.submit(functools.partial(scrape, link, options.output_dir)))
+                    for link in links_data ]
+    
+    return
+    
+if __name__ == "__main__" :
+    main()

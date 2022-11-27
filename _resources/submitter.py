@@ -84,6 +84,7 @@ def crdf_submit(options):
             else:
                 print("[!] error while submitting CRDF URLs")
                 pprint.pprint(req.status_code)
+                print(req.content)
                 retval = os.EX_DATAERR
         else:
             retval = os.EX_NOINPUT
