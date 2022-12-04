@@ -2,7 +2,7 @@ name: Daily scraping
 
 on: 
   schedule:
-    - cron:  '10 00 * * *'
+    - cron:  '10 03 * * *'
 
 permissions:
   contents: write
