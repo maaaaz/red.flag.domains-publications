@@ -39,3 +39,14 @@ jobs:
         git add -A
         git commit -m "scraping bot - $(date --date="yesterday" '+%Y/%m/%d')"
         git push
+
+    - name: Consolidate the full dataset
+      run: |
+        cd $GITHUB_WORKSPACE
+        csvstack -n datefile --filenames 20**/**/**-**-****.csv | csvformat -U 1 > ./full_dataset/full.csv
+        git config user.name scraping-bot
+        git config user.email github-actions@github.com
+        git pull
+        git add -A
+        git commit -m "fulldataset bot - $(date --date="yesterday" '+%Y/%m/%d')"
+        git push
