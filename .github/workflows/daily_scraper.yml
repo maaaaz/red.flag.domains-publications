@@ -32,7 +32,7 @@ jobs:
     - name: Scrape the previous day publication and push to the repository
       run: |
         cd $GITHUB_WORKSPACE
-        python $GITHUB_WORKSPACE/_resources/scraper.py 
+        python $GITHUB_WORKSPACE/_resources/scraper.py -d yesterday
         git config user.name scraping-bot
         git config user.email github-actions@github.com
         git pull
