@@ -11,7 +11,7 @@ import code
 import pprint
 
 # Script version
-VERSION = '1.0'
+VERSION = '1.1'
 
 # Options definition
 parser = argparse.ArgumentParser(description="version: " + VERSION)
@@ -68,6 +68,9 @@ def crdf_submit(options):
     if os.path.isfile(options.input_file):
         with open(options.input_file, mode='r', encoding='utf-8') as fd_input:
             data = fd_input.read().splitlines()
+            
+            # punydecode
+            data = list(map(lambda fqdn: fqdn.encode('idna').decode(), data))
             malicious_url = list(map(lambda fqdn: "http://" + fqdn, data)) + list(map(lambda fqdn: "https://" + fqdn, data))
         
         if malicious_url:
