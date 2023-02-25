@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sys
-import re
 import argparse
 import waybackpy
 
@@ -11,7 +9,7 @@ import code
 import pprint
 
 # Script version
-VERSION = '1.0'
+VERSION = '1.1'
 
 # Options definition
 parser = argparse.ArgumentParser(description="version: " + VERSION)
@@ -30,19 +28,19 @@ def waybackpy_save(url, successful_save_attempts, failed_save_attempts):
     res = True
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
     
-    print("[+] trying to save url:\t\t'%s'" % url)
+    #print("[+] trying to save url:\t\t'%s'" % url)
     try:
         save_api = waybackpy.WaybackMachineSaveAPI(url=url, user_agent=user_agent, max_tries=5)
         save_api.save()
         
         if save_api.status_code == 200:
-            print("[+] successfully saved url\t'%s'\n----------" % url)
+            print("[+] '%s' :\t successfully saved url\n----------" % url)
             successful_save_attempts.append(url)
 
     except Exception as e:
         failed_save_attempts.append(url)
         res = False
-        print("[!] exception '%s' for url '%s'\n----------" % (e.__class__.__name__, url))
+        print("[!] '%s' :\t exception '%s'\n----------" % (url, e.__class__.__name__))
     
     finally:
         return res
@@ -58,16 +56,23 @@ def submit(options):
             
             # punydecode
             data = list(map(lambda fqdn: fqdn.encode('idna').decode(), data))
-            urls = list(map(lambda fqdn: "http://" + fqdn, data)) + list(map(lambda fqdn: "https://" + fqdn, data))
-            
+        
+        if len(data) >= 1:
+            first_line = data[0]
+            if not(first_line.startswith(('http://', 'https://'))):
+                
+                urls = list(map(lambda fqdn: "http://" + fqdn, data)) + list(map(lambda fqdn: "https://" + fqdn, data))
+            else:
+                urls = data
+                
         if urls:
             print("[+] %s urls to save\n" % len(urls))
             
             for url in urls:
                 waybackpy_save(url, successful_save_attempts, failed_save_attempts)
             
-            print("[!] number of failed save attempts: %s" % len(failed_save_attempts))
-            pprint.pprint(failed_save_attempts)
+            print("\n[!] number of failed save attempts: %s" % len(failed_save_attempts))
+            pprint.pprint(failed_save_attempts) if failed_save_attempts else None
     
             if options.output_success and successful_save_attempts:
                 dump_to_file(options.output_success, successful_save_attempts)
