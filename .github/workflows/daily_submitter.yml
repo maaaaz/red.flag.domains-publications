@@ -38,9 +38,10 @@ jobs:
       run: |
         pip install -r $GITHUB_WORKSPACE/_resources/waybacksave_requirements.txt
         
-    - name: Submit the previous day publication to the Wayback Machine
+    - name: Submit the previous day publication to the Wayback Machine for archive
       run: |
         cd $GITHUB_WORKSPACE
         csvsql -u 1 ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv') --tables db --query 'SELECT fqdn FROM db WHERE ip IS NOT NULL' | sed 1d| tee /tmp/previous_day_with_ip
         python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip -f /tmp/previous_day_with_ip_failed
-        python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed
+        python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed -f /tmp/previous_day_with_ip_failed_again
+        python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed_again
