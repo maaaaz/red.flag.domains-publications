@@ -6,6 +6,7 @@ import sys
 import re
 import argparse
 import requests
+import time
 
 import code
 import pprint
@@ -17,6 +18,10 @@ VERSION = '1.1'
 parser = argparse.ArgumentParser(description="version: " + VERSION)
 parser.add_argument('-i', '--input-file', help='Input file (either list of newline-separated FQDN, or a list newline-separated of CRDF refs)')
 parser.add_argument('-a', '--action', help = 'Action to do on CRDF (default \'submit\')', choices = ['submit', 'check'], type=str.lower, default = 'submit')
+
+def chunks(lst, n):
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
 
 def crdf_check(options):
     retval = os.EX_OK
@@ -71,24 +76,37 @@ def crdf_submit(options):
             
             # punydecode
             data = list(map(lambda fqdn: fqdn.encode('idna').decode(), data))
-            malicious_url = list(map(lambda fqdn: "http://" + fqdn, data)) + list(map(lambda fqdn: "https://" + fqdn, data))
+        
+        if len(data) >= 1:
+            first_line = data[0]
+            if not(first_line.startswith(('http://', 'https://'))):
+            
+                malicious_url = list(map(lambda fqdn: "http://" + fqdn, data)) + list(map(lambda fqdn: "https://" + fqdn, data))
+            else:
+                malicious_url = data
         
         if malicious_url:
             #pprint.pprint(malicious_url)
             
-            req_data = {"token": os.environ['SECRET_CRDF_API_KEY'], "urls": malicious_url}
-            req = requests.post(url_endpoint, headers=headers, json=req_data)
-            
-            if req.ok:
-                req_json = req.json()
-                if req_json.get('error') == False:
-                    print("[+] CRDF submit request successful")
-                    pprint.pprint(req_json)
-            else:
-                print("[!] error while submitting CRDF URLs")
-                pprint.pprint(req.status_code)
-                print(req.content)
-                retval = os.EX_DATAERR
+            # slices of max 1000 url
+            for sublist in chunks(malicious_url, 1000):
+                req_data = {"token": os.environ['SECRET_CRDF_API_KEY'], "urls": sublist}
+                req = requests.post(url_endpoint, headers=headers, json=req_data)
+                
+                if req.ok:
+                    req_json = req.json()
+                    if req_json.get('error') == False:
+                        print("[+] CRDF submit request successful")
+                        pprint.pprint(req_json)
+                
+                else:
+                    print("[!] error while submitting CRDF URLs")
+                    pprint.pprint(req.status_code)
+                    print(req.content)
+                    retval = os.EX_DATAERR
+                
+                print('-------------------')
+                time.sleep(31)
         else:
             retval = os.EX_NOINPUT
             
