@@ -8,6 +8,8 @@ import waybackpy
 import code
 import pprint
 
+from w3lib.url import safe_url_string
+
 # Script version
 VERSION = '1.1'
 
@@ -55,7 +57,7 @@ def submit(options):
             data = fd_input.read().splitlines()
             
             # punydecode
-            data = list(map(lambda fqdn: fqdn.encode('idna').decode(), data))
+            data = list(map(lambda fqdn: safe_url_string(fqdn), data))
         
         if len(data) >= 1:
             first_line = data[0]
