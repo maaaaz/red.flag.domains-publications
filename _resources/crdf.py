@@ -11,6 +11,8 @@ import time
 import code
 import pprint
 
+from w3lib.url import safe_url_string
+
 # Script version
 VERSION = '1.1'
 
@@ -75,7 +77,7 @@ def crdf_submit(options):
             data = fd_input.read().splitlines()
             
             # punydecode
-            data = list(map(lambda fqdn: fqdn.encode('idna').decode(), data))
+            data = list(map(lambda fqdn: safe_url_string(fqdn), data))
         
         if len(data) >= 1:
             first_line = data[0]
@@ -106,6 +108,8 @@ def crdf_submit(options):
                     retval = os.EX_DATAERR
                 
                 print('-------------------')
+                
+                # 2 submissions per minute
                 time.sleep(31)
         else:
             retval = os.EX_NOINPUT

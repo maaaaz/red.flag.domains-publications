@@ -10,6 +10,8 @@ import time
 import code
 import pprint
 
+from w3lib.url import safe_url_string
+
 # Script version
 VERSION = '1.0'
 
@@ -69,7 +71,7 @@ def netcraft_submit(options):
     if os.path.isfile(options.input_file):
         with open(options.input_file, mode='r', encoding='utf-8') as fd_input:
             data = fd_input.read().splitlines()
-            data = list(map(lambda fqdn: fqdn.encode('idna').decode(), data))
+            data = list(map(lambda fqdn: safe_url_string(fqdn), data))
             
         if len(data) >= 1:
             first_line = data[0]
