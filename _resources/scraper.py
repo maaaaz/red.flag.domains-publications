@@ -30,7 +30,7 @@ input_group.add_argument('-i', '--input-url', help='Input a single red.flag.doma
 input_group.add_argument('-d', '--date', help='Get a specific date of red.flag.domains publication', choices = ['today', 'yesterday'], default = None)
 input_group.add_argument('-a', '--all', help='Get all red.flag.domains publications ever', default = False, action='store_true')
 input_group.add_argument('-f', '--input-file', help='Input file as a list of newline-separated red.flag.domains URL', default = None)
-input_group.add_argument('-r', '--refresh', help='Take an existing CSV output file and refresh records', default = None)
+#input_group.add_argument('-r', '--refresh', help='Take an existing CSV output file and refresh records', default = None)
 parser.add_argument('-o', '--output-dir', help='Output directory (default: current working directory)', default = os.getcwd())
 
 def enrich(entry):

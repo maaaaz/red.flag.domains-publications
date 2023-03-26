@@ -71,15 +71,16 @@ def resolve(options):
                 for netloc in data ]
     
     for netloc, entry_resolved in futs:
-        netloc_idna_decoded, ipv4, ipv6 = entry_resolved.result()
-        if netloc not in results.netloc:
-            results.loc[len(results), 'netloc'] = netloc
-            results.loc[results.netloc.eq(netloc), 'time_checked'] = time_checked
-            results.loc[results.netloc.eq(netloc), 'netloc_idna_decoded'] = netloc_idna_decoded
-            if ipv4:
-                results.loc[results.netloc.eq(netloc), 'ipv4'] = ipv4
-            if ipv6:
-                results.loc[results.netloc.eq(netloc), 'ipv6'] = ipv6
+        if entry_resolved.result():
+            netloc_idna_decoded, ipv4, ipv6 = entry_resolved.result()
+            if netloc not in results.netloc:
+                results.loc[len(results), 'netloc'] = netloc
+                results.loc[results.netloc.eq(netloc), 'time_checked'] = time_checked
+                results.loc[results.netloc.eq(netloc), 'netloc_idna_decoded'] = netloc_idna_decoded
+                if ipv4:
+                    results.loc[results.netloc.eq(netloc), 'ipv4'] = ipv4
+                if ipv6:
+                    results.loc[results.netloc.eq(netloc), 'ipv6'] = ipv6
 
     cymru_resolver = cymruwhois.Client()
     cymru_lookup = cymru_resolver.lookupmany_dict(results.ipv4.dropna().unique().tolist() + results.ipv6.dropna().unique().tolist())
