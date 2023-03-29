@@ -12,6 +12,7 @@ import code
 import pprint
 
 from w3lib.url import safe_url_string
+import validators
 
 # Script version
 VERSION = '1.1'
@@ -74,18 +75,20 @@ def crdf_submit(options):
     
     if os.path.isfile(options.input_file):
         with open(options.input_file, mode='r', encoding='utf-8') as fd_input:
-            data = fd_input.read().splitlines()
-            
-            # punydecode
-            data = list(map(lambda fqdn: safe_url_string(fqdn), data))
-        
-        if len(data) >= 1:
-            first_line = data[0]
-            if not(first_line.startswith(('http://', 'https://'))):
-            
-                malicious_url = list(map(lambda fqdn: "http://" + fqdn, data)) + list(map(lambda fqdn: "https://" + fqdn, data))
-            else:
-                malicious_url = data
+            for line in fd_input:
+                line = line.strip()
+                if line.startswith(('http://', 'https://')):
+                    entry = safe_url_string(line)
+                    if validators.url(entry):
+                        malicious_url.append(entry)
+                else:
+                    entry_http = safe_url_string('http://'+line)
+                    if validators.url(entry_http):
+                        malicious_url.append(entry_http)
+                    
+                    entry_https = safe_url_string('https://'+line)
+                    if validators.url(entry_https):
+                        malicious_url.append(entry_https)
         
         if malicious_url:
             #pprint.pprint(malicious_url)
