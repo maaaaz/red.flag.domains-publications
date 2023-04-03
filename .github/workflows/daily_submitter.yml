@@ -2,7 +2,7 @@ name: Daily submitting
 
 on: 
   schedule:
-    - cron:  '10 5 * * *'
+    - cron:  '10 3 * * *'
 
 permissions:
   contents: read
