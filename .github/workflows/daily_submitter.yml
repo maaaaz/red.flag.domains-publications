@@ -21,6 +21,7 @@ jobs:
 
     - name: Install Netcraft dependencies
       run: |
+        python -m pip install --upgrade pip
         pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt
         
     - name: Submit the previous day publication to Netcraft
@@ -34,7 +35,6 @@ jobs:
 
     - name: Install CRDF submitter dependencies
       run: |
-        python -m pip install --upgrade pip
         pip install -r $GITHUB_WORKSPACE/_resources/crdf_requirements.txt
     
     - name: Submit the previous day publication to CRDF
