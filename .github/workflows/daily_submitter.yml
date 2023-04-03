@@ -19,6 +19,19 @@ jobs:
       with:
         python-version: "3.10"
 
+    - name: Install Netcraft dependencies
+      run: |
+        pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt
+        
+    - name: Submit the previous day publication to Netcraft
+      env:
+        SECRET_NETCRAFT_REPORT_MAIL: ${{ secrets.SECRET_NETCRAFT_REPORT_MAIL }}
+        
+      run: |
+        cd $GITHUB_WORKSPACE
+        csvcut -x -c 'fqdn' ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')| sed 1d| tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
+        python $GITHUB_WORKSPACE/_resources/netcraft.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
+
     - name: Install CRDF submitter dependencies
       run: |
         python -m pip install --upgrade pip
@@ -33,19 +46,6 @@ jobs:
         csvcut -x -c 'fqdn' ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')| sed 1d| tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
         ls -al /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
         python $GITHUB_WORKSPACE/_resources/crdf.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
-
-    - name: Install Netcraft dependencies
-      run: |
-        pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt
-        
-    - name: Submit the previous day publication to Netcraft
-      env:
-        SECRET_NETCRAFT_REPORT_MAIL: ${{ secrets.SECRET_NETCRAFT_REPORT_MAIL }}
-        
-      run: |
-        cd $GITHUB_WORKSPACE
-        csvcut -x -c 'fqdn' ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')| sed 1d| tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
-        python $GITHUB_WORKSPACE/_resources/netcraft.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
 
     - name: Install Waybacksave dependencies
       run: |
