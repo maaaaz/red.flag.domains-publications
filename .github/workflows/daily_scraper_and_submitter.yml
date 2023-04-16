@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   scraper:
+    continue-on-error: true
     runs-on: ubuntu-latest
 
     steps:
