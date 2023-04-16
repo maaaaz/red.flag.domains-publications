@@ -1,7 +1,7 @@
 name: Daily scraping and submitting
 
 on: [push]
-  ~#schedule:
+  #schedule:
     #- cron:  '10 01 * * *'
 
 permissions:
