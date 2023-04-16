@@ -1,8 +1,8 @@
 name: Daily scraping and submitting
 
-on: 
-  schedule:
-    - cron:  '10 01 * * *'
+on: [push]
+  ~#schedule:
+    #- cron:  '10 01 * * *'
 
 permissions:
   contents: write
@@ -63,6 +63,7 @@ jobs:
 
     - name: Install Netcraft dependencies
       run: |
+        git pull
         python -m pip install --upgrade pip
         pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt
         
