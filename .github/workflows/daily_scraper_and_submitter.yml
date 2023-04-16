@@ -20,6 +20,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        date -u
         python -m pip install --upgrade pip
         pip install -r $GITHUB_WORKSPACE/_resources/scraper_requirements.txt
 
