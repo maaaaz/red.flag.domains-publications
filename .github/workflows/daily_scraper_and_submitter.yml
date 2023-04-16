@@ -1,15 +1,14 @@
 name: Daily scraping and submitting
 
-on: [push]
-  #schedule:
-    #- cron:  '10 01 * * *'
+on: 
+  schedule:
+    - cron:  '10 01 * * *'
 
 permissions:
   contents: write
 
 jobs:
   scraper:
-    continue-on-error: true
     runs-on: ubuntu-latest
 
     steps:
