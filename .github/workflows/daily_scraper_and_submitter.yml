@@ -2,7 +2,7 @@ name: Daily scraping and submitting
 
 on: 
   schedule:
-    - cron:  '10 01 * * *'
+    - cron:  '30 00 * * *'
 
 permissions:
   contents: write
