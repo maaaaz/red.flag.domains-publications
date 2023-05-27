@@ -54,7 +54,6 @@ def crdf_check(options):
                 else:
                     print("[!] error while checking CRDF ref")
                     pprint.pprint(req.status_code)
-                    retval = os.EX_DATAERR
                 
                 print('-------------------')
                 
@@ -108,7 +107,6 @@ def crdf_submit(options):
                     print("[!] error while submitting CRDF URLs")
                     pprint.pprint(req.status_code)
                     print(req.content)
-                    retval = os.EX_DATAERR
                 
                 print('-------------------')
                 

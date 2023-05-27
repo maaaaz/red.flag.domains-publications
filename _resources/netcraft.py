@@ -51,7 +51,6 @@ def netcraft_check(options):
                     print("[!] error while checking Netcraft ref")
                     pprint.pprint(req.status_code)
                     print(req.content)
-                    retval = os.EX_DATAERR
                 
                 print('-------------------')
                 
@@ -110,7 +109,6 @@ def netcraft_submit(options):
                         print("[!] error while submitting Netcraft URLs")
                         pprint.pprint(req.status_code)
                         print(req.content)
-                        retval = os.EX_DATAERR
                 
                 print('-------------------')
         else:
