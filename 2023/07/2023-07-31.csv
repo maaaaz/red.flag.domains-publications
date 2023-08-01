@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"ameli-renouvellement.fr","193.38.250.100","212815","193.38.250.0/24","AS-DYJIX, FR","DE"
+"amende-2023.fr","","","","",""
+"facture-infos.fr","127.0.0.1","NA","NA","NA",""
+"impotgouv-rmb483883.fr","2.56.247.11","39421","2.56.247.0/24","SAPINET-AS, FR","DE"
+"leroy-merlin-france.fr","84.32.84.32","47583","84.32.84.0/24","AS-HOSTINGER, CY","LT"
+"messagerie-info.fr","185.105.35.11","43927","185.105.32.0/22","HOSTERION, RO","RO"
+"traitementstationnement.fr","","","","",""
