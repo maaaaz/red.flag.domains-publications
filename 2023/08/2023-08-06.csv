@@ -1,0 +1,6 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"amendes-servicesgouv.fr","213.226.123.202","49943","213.226.123.0/24","ITRESHENIYA-AS, RU","AE"
+"chronopost-suivis-logistique.fr","213.226.123.23","49943","213.226.123.0/24","ITRESHENIYA-AS, RU","AE"
+"infocreditagricole.fr","217.160.0.42","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"particulier-espace-certif.fr","194.169.175.130","211760","194.169.175.0/24","AS-SUISSE, SC","BG"
+"verifionclients.fr","51.91.236.193","16276","51.91.0.0/16","OVH, FR","FR"
