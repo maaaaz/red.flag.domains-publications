@@ -19822,3 +19822,8 @@
 "2023-08-05.csv","paylibpay.fr","","","","",""
 "2023-08-05.csv","securitycheckone.fr","193.203.239.74","210403","193.203.239.0/24","LWS, FR","FR"
 "2023-08-05.csv","umbro-france.fr","196.240.10.92","58065","196.240.10.0/24","PACKETEXCHANGE, GB","SC"
+"2023-08-06.csv","amendes-servicesgouv.fr","213.226.123.202","49943","213.226.123.0/24","ITRESHENIYA-AS, RU","AE"
+"2023-08-06.csv","chronopost-suivis-logistique.fr","213.226.123.23","49943","213.226.123.0/24","ITRESHENIYA-AS, RU","AE"
+"2023-08-06.csv","infocreditagricole.fr","217.160.0.42","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"2023-08-06.csv","particulier-espace-certif.fr","194.169.175.130","211760","194.169.175.0/24","AS-SUISSE, SC","BG"
+"2023-08-06.csv","verifionclients.fr","51.91.236.193","16276","51.91.0.0/16","OVH, FR","FR"
