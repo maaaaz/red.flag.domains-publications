@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"cybertekangoulins.fr","87.98.150.35","16276","87.98.128.0/17","OVH, FR","FR"
+"magasincybertek-angoulins.fr","","","","",""
+"paylib-recup.fr","51.91.236.255","16276","51.91.0.0/16","OVH, FR","FR"
+"secure9-bnpparibas.fr","79.110.48.19","211252","79.110.48.0/24","AS_DELIS, US","BG"
+"service-banque-bnp-paribas.fr","163.123.143.73","211252","163.123.143.0/24","AS_DELIS, US","US"
+"swisslife-dekemp-noe.fr","138.201.79.102","24940","138.201.0.0/16","HETZNER-AS, DE","DE"
+"westernunions.wf","","","","",""
