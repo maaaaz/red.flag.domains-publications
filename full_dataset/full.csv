@@ -20672,3 +20672,8 @@
 "2023-09-16.csv","impot-remboursement.fr","","","","",""
 "2023-09-16.csv","secure3-bnpparibas.fr","20.100.169.28","8075","20.64.0.0/10","MICROSOFT-CORP-MSN-AS-BLOCK, US","US"
 "2023-09-16.csv","service-client-nickel.fr","80.76.51.21","211252","80.76.51.0/24","AS_DELIS, US","BG"
+"2023-09-17.csv","cyberghostvpn.fr","199.59.243.224","16509","199.59.243.0/24","AMAZON-02, US","US"
+"2023-09-17.csv","espaceclient-dsp2.fr","","","","",""
+"2023-09-17.csv","mediaplus-france.fr","185.230.63.107","58182","185.230.63.0/24","WIX_COM, IL","IL"
+"2023-09-17.csv","pampers-shop.fr","23.227.38.65","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"2023-09-17.csv","support-stussystore.fr","185.135.132.49","210403","185.135.132.0/24","LWS, FR","FR"
