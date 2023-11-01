@@ -47,16 +47,6 @@ jobs:
         ls -al /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
         python $GITHUB_WORKSPACE/_resources/crdf.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
 
-    - name: Push to AlienVault pulse
-      continue-on-error: true
-      env:
-        SECRET_ALIENVAULT_API_KEY: ${{ secrets.SECRET_ALIENVAULT_API_KEY }}
-        
-      run: |
-        cd $GITHUB_WORKSPACE
-        pip install -r "$GITHUB_WORKSPACE/_resources/alienvault_requirements.txt"
-        python "$GITHUB_WORKSPACE/_resources/alienvault.py" -p "xxxx" -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')"
-
     - name: Install Waybacksave dependencies
       run: |
         pip install -r $GITHUB_WORKSPACE/_resources/waybacksave_requirements.txt
