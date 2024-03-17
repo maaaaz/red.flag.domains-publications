@@ -7,6 +7,7 @@ import argparse
 import functools
 import concurrent.futures
 import requests
+import datetime
 import time
 
 import code
@@ -20,6 +21,10 @@ VERSION = '1.0'
 
 SPAMHAUS_API_BASE_URL = 'https://submit.spamhaus.org/portal/api/v1/'
 SECRET_SPAMHAUS_API_KEY_BEARER = {"Authorization": "Bearer " + os.environ['SECRET_SPAMHAUS_API_KEY']}
+
+SPAMHAUS_API_MAX_REQUEST_ONE_MINUTE = 30
+SPAMHAUS_API_REMAINING_CALLS = SPAMHAUS_API_MAX_REQUEST_ONE_MINUTE
+SPAMHAUS_API_TIMETOWAIT = SPAMHAUS_API_MAX_REQUEST_ONE_MINUTE
 
 ACTION_SUBMIT = 'submit'
 ACTION_GET_THREATS_TYPES = 'get_threats_types'
@@ -52,6 +57,28 @@ def make_payload(options, threat_type, object, reason='It is malicious !'):
         print('[!] error while submitting indicators => length of "reason" is higher (%s) than the limit of 255 chars' % len(reason))
     
     return elem
+
+def make_api_submit_request(url_endpoint, req_data):
+    global SPAMHAUS_API_MAX_REQUEST_ONE_MINUTE, SPAMHAUS_API_REMAINING_CALLS, SPAMHAUS_API_TIMETOWAIT
+    
+    if SPAMHAUS_API_REMAINING_CALLS < 2:
+        print('[!] Sleeping for "%s" seconds.\tIt is currently "%s" UTC' % (SPAMHAUS_API_TIMETOWAIT, datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()))
+        time.sleep(SPAMHAUS_API_TIMETOWAIT)
+        print('[!] Sleeping finished.\t\tIt is currently "%s" UTC' % datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat())
+        SPAMHAUS_API_REMAINING_CALLS = SPAMHAUS_API_MAX_REQUEST_ONE_MINUTE
+        
+    req = requests.post(url_endpoint, headers=SECRET_SPAMHAUS_API_KEY_BEARER, json=req_data)
+    req_headers = dict(req.headers)
+    
+    if 'X-Ratelimit-Remaining' in req_headers:
+        SPAMHAUS_API_REMAINING_CALLS = int(req_headers['X-Ratelimit-Remaining'])
+    
+    """
+    if 'X-Ratelimit-Reset' in req_headers:
+        SPAMHAUS_API_TIMETOWAIT = int(req_headers['X-Ratelimit-Reset'])
+    """
+    
+    return req
 
 def spamhaus_get_actions(options):
     retval = os.EX_OK
@@ -116,7 +143,7 @@ def spamhaus_submit(options):
                 
                 if req_data:
                     pprint.pprint(req_data)
-                    req = requests.post(url_endpoint, headers=SECRET_SPAMHAUS_API_KEY_BEARER, json=req_data)
+                    req = make_api_submit_request(url_endpoint, req_data)
                     if req.ok:
                         req_json = req.content
                         try:
@@ -132,6 +159,7 @@ def spamhaus_submit(options):
                         print("[!] error while submitting to Spamhaus")
                         pprint.pprint(req.status_code)
                         print(req.content)
+                        print(req.headers)
                         print_horizontal_bar()
     
     else:
