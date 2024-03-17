@@ -14,7 +14,6 @@ import pprint
 
 from w3lib.url import safe_url_string
 import validators
-import json
 
 # Globals
 VERSION = '1.0'
