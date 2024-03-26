@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"accoount-navigo.fr","","","","",""
+"boutique-drmartens.fr","23.227.38.65","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"conexipapall.fr","62.4.16.183","12876","62.4.0.0/19","Online SAS, FR","FR"
+"feelgroundsshoes.fr","196.196.155.154","58065","196.196.155.0/24","PACKETEXCHANGE, GB","SC"
+"impotsfrance.fr","217.160.0.167","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"livraison-chronopost-suivi.fr","176.123.0.55","200019","176.123.0.0/24","ALEXHOST, MD","MD"
+"whitestufffrance.fr","196.196.38.235","58065","196.196.38.0/24","PACKETEXCHANGE, GB","SC"
