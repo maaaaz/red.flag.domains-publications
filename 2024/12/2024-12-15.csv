@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"liveouytlook.fr","","","","",""
+"may-connect.fr","23.227.38.32","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"mondialrelais-livraison.fr","","","","",""
+"paiements-en-ligne.fr","","","","",""
+"patagoniasparis.fr","172.67.139.153","13335","172.67.128.0/20","CLOUDFLARENET, US","US"
+"supporticloud.fr","51.91.236.255","16276","51.91.0.0/16","OVH, FR","FR"
+"westoutlet.fr","23.227.38.32","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
