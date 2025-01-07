@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"espace-mondialrelay.fr","45.202.35.53","215208","45.202.35.0/24","DOLPHINNETWORKS, GB","MU"
+"justice-paris.fr","84.32.84.32","47583","84.32.84.0/24","AS-HOSTINGER, CY","LT"
+"reglement-free.fr","45.61.139.197","399629","45.61.139.0/24","BLNWX, US","US"
+"regul-cpam-ref35719701618534628529172.fr","217.160.0.79","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"regul-cpam-ref48094271830379760822130.fr","217.160.0.90","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"secur-sg.fr","","","","",""
+"supportlbc.fr","","","","",""
