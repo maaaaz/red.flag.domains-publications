@@ -1,0 +1,6 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"espaceclient-cetelem.fr","51.20.128.144","16509","51.20.0.0/16","AMAZON-02, US","US"
+"facture-netflix.fr","213.186.33.5","16276","213.186.32.0/19","OVH, FR","FR"
+"faculterdemedecineparis.fr","46.30.211.38","51468","46.30.208.0/21","ONECOM, DK","DK"
+"kingtvpro.fr","84.32.84.32","47583","84.32.84.0/24","AS-HOSTINGER, CY","LT"
+"validation-recharge.fr","217.160.0.96","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
