@@ -64,7 +64,7 @@ def make_api_submit_request(url_endpoint, req_data):
     if SPAMHAUS_API_REMAINING_CALLS < 2:
         print('[!] Sleeping for "%s" seconds.\tIt is currently "%s" UTC' % (SPAMHAUS_API_TIMETOWAIT, datetime.datetime.now(datetime.UTC).replace(tzinfo=datetime.timezone.utc).isoformat()))
         time.sleep(SPAMHAUS_API_TIMETOWAIT)
-        print('[!] Sleeping finished.\t\tIt is currently "%s" UTC' % datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat())
+        print('[!] Sleeping finished.\t\tIt is currently "%s" UTC' % datetime.datetime.now(datetime.UTC).replace(tzinfo=datetime.timezone.utc).isoformat())
         SPAMHAUS_API_REMAINING_CALLS = SPAMHAUS_API_MAX_REQUEST_ONE_MINUTE
         
     req = requests.post(url_endpoint, headers=SECRET_SPAMHAUS_API_KEY_BEARER, json=req_data)
