@@ -69,6 +69,8 @@ def make_api_submit_request(url_endpoint, req_data):
         
     req = requests.post(url_endpoint, headers=SECRET_SPAMHAUS_API_KEY_BEARER, json=req_data)
     req_headers = dict(req.headers)
+
+    SPAMHAUS_API_REMAINING_CALLS = SPAMHAUS_API_REMAINING_CALLS - 1
     
     if 'X-Ratelimit-Remaining' in req_headers:
         SPAMHAUS_API_REMAINING_CALLS = int(req_headers['X-Ratelimit-Remaining'])
