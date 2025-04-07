@@ -112,8 +112,6 @@ def crdf_submit(options):
                 
                 # 2 submissions per minute
                 time.sleep(31)
-        else:
-            retval = os.EX_NOINPUT
             
     else:
         retval = os.EX_NOINPUT
