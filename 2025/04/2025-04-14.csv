@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"all-y-spin.fr","52.48.146.123","16509","52.48.0.0/14","AMAZON-02, US","US"
+"billetterie-ninhosdt.fr","23.227.38.65","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"chaussurefilapascher.fr","172.67.174.28","13335","172.67.160.0/20","CLOUDFLARENET, US","US"
+"espace-client-edfrance.fr","176.123.1.86","200019","176.123.1.0/24","ALEXHOST, MD","MD"
+"lbp-verification-service.fr","194.26.192.214","210558","194.26.192.0/24","SERVICES-1337-GMBH 1337-SERVICES-GMBH-NETWORK, DE","DE"
+"mondialrelay-delivery.fr","66.63.187.47","214943","66.63.187.0/24","RAILNET, US","US"
+"mondialrelay-express-delivery.fr","66.63.187.47","214943","66.63.187.0/24","RAILNET, US","US"
