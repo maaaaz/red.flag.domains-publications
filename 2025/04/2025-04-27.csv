@@ -1,0 +1,6 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"billetterie-doretdeplatines.fr","23.227.38.71","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"espaceclientsuivi.fr","217.160.0.134","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"paiement-mondialrelay.fr","83.219.243.113","41745","83.219.243.0/24","FORTIS-AS Hosting services, RU","RU"
+"service-opposition.fr","","","","",""
+"service-sg-mail.fr","104.21.80.1","13335","104.21.80.0/20","CLOUDFLARENET, US","US"
