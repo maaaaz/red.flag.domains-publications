@@ -1,0 +1,4 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"polenefr.fr","","","","",""
+"tribunaldeparis.fr","213.182.55.202","8304","213.182.32.0/19","ECRITEL-FRANCE ISP and web hosting., FR","FR"
+"votre-carte-vital.fr","217.160.0.140","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
