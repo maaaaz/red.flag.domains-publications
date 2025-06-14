@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"antsgouve.fr","81.88.57.68","39729","81.88.48.0/20","REGISTER-AS, IT","IT"
+"cosfr.fr","172.67.191.5","13335","172.67.176.0/20","CLOUDFLARENET, US","US"
+"darty-prevention-de-la-fraude.fr","35.204.150.5","396982","35.204.144.0/20","GOOGLE-CLOUD-PLATFORM, US","US"
+"inf-retraite.fr","104.247.81.54","206834","104.247.80.0/22","TEAMINTERNET-CA-AS, DE","CA"
+"mon-espace-expedition.fr","69.62.115.96","47583","69.62.112.0/22","AS-HOSTINGER, CY","LT"
+"mrelay-support.fr","192.3.176.117","36352","192.3.176.0/21","AS-COLOCROSSING, US","US"
+"timbresantsgouv.fr","81.88.57.68","39729","81.88.48.0/20","REGISTER-AS, IT","IT"
