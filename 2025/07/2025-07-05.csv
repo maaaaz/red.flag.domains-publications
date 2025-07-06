@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"bracelet-pandora.fr","213.186.33.5","16276","213.186.32.0/19","OVH, FR","FR"
+"corgibet-fr.fr","75.2.115.196","16509","75.2.112.0/20","AMAZON-02, US","US"
+"gymsharkfrance.fr","15.197.130.221","16509","15.197.128.0/20","AMAZON-02, US","US"
+"n-vcasino.fr","75.2.115.196","16509","75.2.112.0/20","AMAZON-02, US","US"
+"ninecasinofr.fr","","","","",""
+"pandora.re","199.59.243.228","16509","199.59.243.0/24","AMAZON-02, US","US"
+"spinfest-fr.fr","75.2.115.196","16509","75.2.112.0/20","AMAZON-02, US","US"
