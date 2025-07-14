@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"ameli-vitale.fr","213.186.33.5","16276","213.186.32.0/19","OVH, FR","FR"
+"billetevent.fr","23.227.38.67","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"ceidf-caisse-epargne.fr","213.255.195.49","210403","213.255.195.0/24","LWS, FR","FR"
+"chorusnotificationpro.fr","3.33.130.190","16509","3.33.128.0/20","AMAZON-02, US","US"
+"mondial-relay-colis.fr","83.229.19.90","210403","83.229.19.0/24","LWS, FR","FR"
+"suucplylp.fr","62.4.23.115","12876","62.4.0.0/19","Online SAS, FR","FR"
+"zonerecharge.fr","212.1.212.180","47583","212.1.212.0/24","AS-HOSTINGER, CY","CY"
