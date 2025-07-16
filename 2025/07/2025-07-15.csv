@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"actualisation-vitale.fr","217.160.0.91","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"birkenstock-destock.fr","127.0.0.1","NA","NA","NA",""
+"labubu-world.fr","23.227.38.66","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"labubumystere.fr","23.227.38.65","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"outletenligne.fr","23.227.38.65","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
+"owalaifrance.fr","172.64.80.1","13335","172.64.80.0/20","CLOUDFLARENET, US","US"
+"poweruptickets.fr","23.227.38.69","13335","23.227.38.0/23","CLOUDFLARENET, US","CA"
