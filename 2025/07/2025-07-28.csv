@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"blackstone-store.fr","217.160.0.227","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"credit24.fr","64.190.63.222","47846","64.190.62.0/23","SEDO-AS, DE","DE"
+"e-societegenerale.fr","","","","",""
+"mondialrelay-tracking.fr","2.58.56.172","210558","2.58.56.0/24","SERVICES-1337-GMBH 1337-SERVICES-GMBH-NETWORK, DE","DE"
+"qaixabanque.fr","64.190.63.222","47846","64.190.62.0/23","SEDO-AS, DE","DE"
+"sisleyfrance.fr","104.21.64.1","13335","104.21.64.0/20","CLOUDFLARENET, US","US"
+"support-mondialrelais-pickup.fr","","","","",""
