@@ -117,6 +117,14 @@ jobs:
         python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed_again -f /tmp/previous_day_with_ip_failed_again_again -q
         python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed_again_again
 
+    - name: Submit to urlquery
+      env:
+        SECRET_URLQUERY_APIKEY: ${{ secrets.SECRET_URLQUERY_APIKEY }}
+      run: |
+        cd /tmp/
+        pip install pyurlquerycli
+        pyurlquerycli -i "-i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" > /tmp/urlquery_results
+
     - name: Submit to Spamhaus
       env: 
         SECRET_SPAMHAUS_API_KEY: ${{ secrets.SECRET_SPAMHAUS_API_KEY }}
@@ -125,11 +133,3 @@ jobs:
         cd $GITHUB_WORKSPACE
         pip install -r $GITHUB_WORKSPACE/_resources/spamhaus_requirements.txt
         python "$GITHUB_WORKSPACE/_resources/spamhaus.py" -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" -r "See https://red.flag.domains/posts/$(date --date="yesterday" '+%Y-%m-%d')/"
-
-    - name: Submit to urlquery
-      env:
-        SECRET_URLQUERY_APIKEY: ${{ secrets.SECRET_URLQUERY_APIKEY }}
-      run: |
-        cd /tmp/
-        pip install pyurlquerycli
-        pyurlquerycli -i "-i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" > /tmp/urlquery_results
