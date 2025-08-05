@@ -123,7 +123,7 @@ jobs:
       run: |
         cd /tmp/
         pip install pyurlquerycli
-        pyurlquerycli -i "-i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" > /tmp/urlquery_results
+        pyurlquerycli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" > /tmp/urlquery_results
 
     - name: Submit to Spamhaus
       env: 
