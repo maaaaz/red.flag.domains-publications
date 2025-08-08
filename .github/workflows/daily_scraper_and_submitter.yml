@@ -77,10 +77,32 @@ jobs:
         cd $GITHUB_WORKSPACE
         csvcut -x -c 'fqdn' ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')| sed 1d| tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
         python $GITHUB_WORKSPACE/_resources/netcraft.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
+
+
+    - name: Push to AlienVault pulse
+      continue-on-error: true
+      env:
+        SECRET_ALIENVAULT_API_KEY: ${{ secrets.SECRET_ALIENVAULT_API_KEY }}
+        
+      run: |
+        cd $GITHUB_WORKSPACE
+        pip install -r "$GITHUB_WORKSPACE/_resources/alienvault_requirements.txt"
+        python "$GITHUB_WORKSPACE/_resources/alienvault.py" -p "6544b0acf1c1eb2efe9e34e0" -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')"
+        
+    
+    - name: Submit to urlquery
+      env:
+        SECRET_URLQUERY_APIKEY: ${{ secrets.SECRET_URLQUERY_APIKEY }}
+      run: |
+        cd /tmp/
+        pip install pyurlquerycli
+        pyurlquerycli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" > /tmp/urlquery_results
+        
         
     - name: Install CRDF submitter dependencies
       run: |
         pip install -r $GITHUB_WORKSPACE/_resources/crdf_requirements.txt
+
     
     - name: Submit the previous day publication to CRDF
       env: 
@@ -93,20 +115,10 @@ jobs:
         python $GITHUB_WORKSPACE/_resources/crdf.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
 
 
-    - name: Push to AlienVault pulse
-      continue-on-error: true
-      env:
-        SECRET_ALIENVAULT_API_KEY: ${{ secrets.SECRET_ALIENVAULT_API_KEY }}
-        
-      run: |
-        cd $GITHUB_WORKSPACE
-        pip install -r "$GITHUB_WORKSPACE/_resources/alienvault_requirements.txt"
-        python "$GITHUB_WORKSPACE/_resources/alienvault.py" -p "6544b0acf1c1eb2efe9e34e0" -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')"
-
-        
     - name: Install Waybacksave dependencies
       run: |
         pip install -r $GITHUB_WORKSPACE/_resources/waybacksave_requirements.txt
+
         
     - name: Submit the previous day publication to the Wayback Machine for archive
       run: |
@@ -116,14 +128,6 @@ jobs:
         python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed -f /tmp/previous_day_with_ip_failed_again -q
         python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed_again -f /tmp/previous_day_with_ip_failed_again_again -q
         python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed_again_again
-
-    - name: Submit to urlquery
-      env:
-        SECRET_URLQUERY_APIKEY: ${{ secrets.SECRET_URLQUERY_APIKEY }}
-      run: |
-        cd /tmp/
-        pip install pyurlquerycli
-        pyurlquerycli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" > /tmp/urlquery_results
 
     - name: Submit to Spamhaus
       env: 
