@@ -98,11 +98,6 @@ jobs:
         pip install pyurlquerycli
         pyurlquerycli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" > /tmp/urlquery_results
         
-        
-    - name: Install CRDF submitter dependencies
-      run: |
-        pip install -r $GITHUB_WORKSPACE/_resources/crdf_requirements.txt
-
     
     - name: Submit the previous day publication to CRDF
       env: 
@@ -110,8 +105,13 @@ jobs:
         
       run: |
         cd $GITHUB_WORKSPACE
+        pip install -r $GITHUB_WORKSPACE/_resources/crdf_requirements.txt
         csvcut -x -c 'fqdn' ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')| sed 1d| tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
         ls -al /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
+
+        sudo docker run -q --restart=always -itd --name warpsocks -p 127.0.0.1:9091:9091 "ghcr.io/mon-ius/docker-warp-socks:v5"
+        export http_proxy="http://127.0.0.1:9091"
+        export https_proxy="http://127.0.0.1:9091"
         python $GITHUB_WORKSPACE/_resources/crdf.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
 
 
