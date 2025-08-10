@@ -110,6 +110,7 @@ jobs:
         ls -al /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
 
         sudo docker run -q --restart=always -itd --name warpsocks -p 127.0.0.1:9091:9091 "ghcr.io/mon-ius/docker-warp-socks:v5"
+        sleep 15
         export http_proxy="http://127.0.0.1:9091"
         export https_proxy="http://127.0.0.1:9091"
         python $GITHUB_WORKSPACE/_resources/crdf.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
