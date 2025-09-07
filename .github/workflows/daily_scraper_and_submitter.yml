@@ -23,7 +23,7 @@ jobs:
         date -u
         TZ="Europe/Paris" date
         python -m pip install --upgrade pip
-        pip install -r $GITHUB_WORKSPACE/_resources/scraper_requirements.txt
+        pip install -r $GITHUB_WORKSPACE/_resources/scraper_requirements.txt csvkit
 
     - name: Create year/month dirs if not existing
       run: |
@@ -118,17 +118,18 @@ jobs:
 
     - name: Install Waybacksave dependencies
       run: |
-        pip install -r $GITHUB_WORKSPACE/_resources/waybacksave_requirements.txt
+        #pip install -r $GITHUB_WORKSPACE/_resources/waybacksave_requirements.txt
+        pip install waybacksavebulk
 
         
     - name: Submit the previous day publication to the Wayback Machine for archive
       run: |
         cd $GITHUB_WORKSPACE
         csvsql -u 1 ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv') --tables db --query 'SELECT fqdn FROM db WHERE ip IS NOT NULL' | sed 1d| tee /tmp/previous_day_with_ip
-        python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip -f /tmp/previous_day_with_ip_failed
-        python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed -f /tmp/previous_day_with_ip_failed_again -q
-        python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed_again -f /tmp/previous_day_with_ip_failed_again_again -q
-        python $GITHUB_WORKSPACE/_resources/waybacksave.py -i /tmp/previous_day_with_ip_failed_again_again
+        waybacksavebulk -i /tmp/previous_day_with_ip -f /tmp/previous_day_with_ip_failed
+        waybacksavebulk -i /tmp/previous_day_with_ip_failed -f /tmp/previous_day_with_ip_failed_again -q
+        waybacksavebulk -i /tmp/previous_day_with_ip_failed_again -f /tmp/previous_day_with_ip_failed_again_again -q
+        waybacksavebulk -i /tmp/previous_day_with_ip_failed_again_again
 
     - name: Submit to Spamhaus
       env: 
@@ -136,5 +137,6 @@ jobs:
       
       run: |
         cd $GITHUB_WORKSPACE
-        pip install -r $GITHUB_WORKSPACE/_resources/spamhaus_requirements.txt
-        python "$GITHUB_WORKSPACE/_resources/spamhaus.py" -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" -r "See https://red.flag.domains/posts/$(date --date="yesterday" '+%Y-%m-%d')/"
+        #pip install -r $GITHUB_WORKSPACE/_resources/spamhaus_requirements.txt
+        pip install pyspamhauscli
+        pyspamhauscli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" -r "See https://red.flag.domains/posts/$(date --date="yesterday" '+%Y-%m-%d')/"
