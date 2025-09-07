@@ -67,7 +67,7 @@ jobs:
       run: |
         git pull
         python -m pip install --upgrade pip
-        pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt
+        pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt csvkit
         
     - name: Submit the previous day publication to Netcraft
       env:
