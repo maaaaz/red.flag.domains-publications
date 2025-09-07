@@ -67,7 +67,8 @@ jobs:
       run: |
         git pull
         python -m pip install --upgrade pip
-        pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt csvkit
+        #pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt csvkit
+        pip install pynetcraftcli csvkit
         
     - name: Submit the previous day publication to Netcraft
       env:
@@ -76,7 +77,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         csvcut -x -c 'fqdn' ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')| sed 1d| tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
-        python $GITHUB_WORKSPACE/_resources/netcraft.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
+        pynetcraftcli -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
 
 
     - name: Push to AlienVault pulse
