@@ -13,17 +13,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python 3.10
+    
+    - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: "3.10"
+        python-version: "3.12"
 
-    - name: Install dependencies
+    - name: What time is it ?
       run: |
         date -u
         TZ="Europe/Paris" date
+
+    - name: Install dependencies
+      run: |
         python -m pip install --upgrade pip
-        pip install -r $GITHUB_WORKSPACE/_resources/scraper_requirements.txt csvkit
+        #pip install -r $GITHUB_WORKSPACE/_resources/scraper_requirements.txt csvkit
+        pip install redflagdomains_scraper csvkit
 
     - name: Create year/month dirs if not existing
       run: |
@@ -33,7 +38,8 @@ jobs:
     - name: Scrape the previous day publication and push to the repository
       run: |
         cd $GITHUB_WORKSPACE
-        python $GITHUB_WORKSPACE/_resources/scraper.py -d yesterday
+        #python $GITHUB_WORKSPACE/_resources/scraper.py -d yesterday
+        redflagdomains_scraper -d yesterday
         git config user.name scraping-bot
         git config user.email github-actions@github.com
         git pull
@@ -58,10 +64,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python 3.10
+    
+    - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: "3.10"
+        python-version: "3.12"
 
     - name: Install Netcraft dependencies
       run: |
@@ -97,7 +104,7 @@ jobs:
       run: |
         cd /tmp/
         pip install pyurlquerycli
-        pyurlquerycli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" > /tmp/urlquery_results
+        pyurlquerycli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')"
         
     
     - name: Submit the previous day publication to CRDF
