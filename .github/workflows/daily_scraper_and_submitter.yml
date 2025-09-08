@@ -1,8 +1,9 @@
 name: Daily scraping and submitting
 
 on: 
-  schedule:
-    - cron:  '30 00 * * *'
+  workflow_dispatch
+  #schedule:
+  #  - cron:  '30 00 * * *'
 
 permissions:
   contents: write
@@ -79,7 +80,7 @@ jobs:
         
     - name: Submit the previous day publication to Netcraft
       env:
-        SECRET_NETCRAFT_REPORT_MAIL: ${{ secrets.SECRET_NETCRAFT_REPORT_MAIL }}
+        SECRET_NETCRAFT_API_KEY: ${{ secrets.SECRET_NETCRAFT_REPORT_MAIL }}
         
       run: |
         cd $GITHUB_WORKSPACE
