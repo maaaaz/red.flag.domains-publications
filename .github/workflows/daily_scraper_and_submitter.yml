@@ -1,9 +1,9 @@
 name: Daily scraping and submitting
 
 on: 
-  workflow_dispatch
-  #schedule:
-  #  - cron:  '30 00 * * *'
+  #workflow_dispatch
+  schedule:
+    - cron:  '30 00 * * *'
 
 permissions:
   contents: write
@@ -37,7 +37,6 @@ jobs:
         mkdir -p $(date --date="yesterday" '+%Y/%m')
 
     - name: Scrape the previous day publication and push to the repository
-      continue-on-error: true
       run: |
         cd $GITHUB_WORKSPACE
         #python $GITHUB_WORKSPACE/_resources/scraper.py -d yesterday
@@ -50,7 +49,6 @@ jobs:
         git push
 
     - name: Consolidate the full dataset
-      continue-on-error: true
       run: |
         cd $GITHUB_WORKSPACE
         csvstack -n datefile --filenames 20**/**/**-**-****.csv | csvformat -U 1 > ./full_dataset/full.csv
