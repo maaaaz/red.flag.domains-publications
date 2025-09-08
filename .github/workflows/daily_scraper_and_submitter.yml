@@ -39,6 +39,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         redflagdomains_scraper -d yesterday
+        
         git config user.name scraping-bot
         git config user.email github-actions@github.com
         git pull
@@ -97,6 +98,7 @@ jobs:
         
     
     - name: Submit to urlquery
+      continue-on-error: true
       env:
         SECRET_URLQUERY_APIKEY: ${{ secrets.SECRET_URLQUERY_APIKEY }}
       run: |
@@ -106,6 +108,7 @@ jobs:
         
     
     - name: Submit the previous day publication to CRDF
+      continue-on-error: true
       env: 
         SECRET_CRDF_API_KEY: ${{ secrets.SECRET_CRDF_API_KEY }}
         
@@ -123,14 +126,14 @@ jobs:
 
 
     - name: Submit to Spamhaus
+      continue-on-error: true
       env: 
         SECRET_SPAMHAUS_API_KEY: ${{ secrets.SECRET_SPAMHAUS_API_KEY }}
       
       run: |
-        cd $GITHUB_WORKSPACE
+        cd /tmp/
         pip install pyspamhauscli
         pyspamhauscli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" -r "See https://red.flag.domains/posts/$(date --date="yesterday" '+%Y-%m-%d')/"
-        
 
     - name: Install Waybacksave dependencies
       run: |
