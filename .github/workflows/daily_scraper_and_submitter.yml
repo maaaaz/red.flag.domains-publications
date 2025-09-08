@@ -28,7 +28,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        #pip install -r $GITHUB_WORKSPACE/_resources/scraper_requirements.txt csvkit
         pip install redflagdomains_scraper csvkit
 
     - name: Create year/month dirs if not existing
@@ -39,7 +38,6 @@ jobs:
     - name: Scrape the previous day publication and push to the repository
       run: |
         cd $GITHUB_WORKSPACE
-        #python $GITHUB_WORKSPACE/_resources/scraper.py -d yesterday
         redflagdomains_scraper -d yesterday
         git config user.name scraping-bot
         git config user.email github-actions@github.com
@@ -75,12 +73,11 @@ jobs:
       run: |
         git pull
         python -m pip install --upgrade pip
-        #pip install -r $GITHUB_WORKSPACE/_resources/netcraft_requirements.txt csvkit
         pip install pynetcraftcli csvkit
         
     - name: Submit the previous day publication to Netcraft
       env:
-        SECRET_NETCRAFT_API_KEY: ${{ secrets.SECRET_NETCRAFT_REPORT_MAIL }}
+        SECRET_NETCRAFT_REPORT_MAIL: ${{ secrets.SECRET_NETCRAFT_REPORT_MAIL }}
         
       run: |
         cd $GITHUB_WORKSPACE
@@ -125,11 +122,19 @@ jobs:
         python $GITHUB_WORKSPACE/_resources/crdf.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
 
 
+    - name: Submit to Spamhaus
+      env: 
+        SECRET_SPAMHAUS_API_KEY: ${{ secrets.SECRET_SPAMHAUS_API_KEY }}
+      
+      run: |
+        cd $GITHUB_WORKSPACE
+        pip install pyspamhauscli
+        pyspamhauscli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" -r "See https://red.flag.domains/posts/$(date --date="yesterday" '+%Y-%m-%d')/"
+        
+
     - name: Install Waybacksave dependencies
       run: |
-        #pip install -r $GITHUB_WORKSPACE/_resources/waybacksave_requirements.txt
         pip install waybacksavebulk
-
         
     - name: Submit the previous day publication to the Wayback Machine for archive
       run: |
@@ -139,13 +144,3 @@ jobs:
         waybacksavebulk -i /tmp/previous_day_with_ip_failed -f /tmp/previous_day_with_ip_failed_again -q
         waybacksavebulk -i /tmp/previous_day_with_ip_failed_again -f /tmp/previous_day_with_ip_failed_again_again -q
         waybacksavebulk -i /tmp/previous_day_with_ip_failed_again_again
-
-    - name: Submit to Spamhaus
-      env: 
-        SECRET_SPAMHAUS_API_KEY: ${{ secrets.SECRET_SPAMHAUS_API_KEY }}
-      
-      run: |
-        cd $GITHUB_WORKSPACE
-        #pip install -r $GITHUB_WORKSPACE/_resources/spamhaus_requirements.txt
-        pip install pyspamhauscli
-        pyspamhauscli -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')" -r "See https://red.flag.domains/posts/$(date --date="yesterday" '+%Y-%m-%d')/"
