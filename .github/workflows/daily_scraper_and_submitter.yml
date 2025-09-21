@@ -93,8 +93,8 @@ jobs:
         
       run: |
         cd $GITHUB_WORKSPACE
-        pip install -r "$GITHUB_WORKSPACE/_resources/alienvault_requirements.txt"
-        python "$GITHUB_WORKSPACE/_resources/alienvault.py" -p "6544b0acf1c1eb2efe9e34e0" -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')"
+        pip install pyalienvaultcli
+        pyalienvaultcli -p "6544b0acf1c1eb2efe9e34e0" -i "/tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')"
         
     
     - name: Submit to urlquery
@@ -114,7 +114,8 @@ jobs:
         
       run: |
         cd $GITHUB_WORKSPACE
-        pip install -r $GITHUB_WORKSPACE/_resources/crdf_requirements.txt
+        pip install pycrdfcli
+        
         csvcut -x -c 'fqdn' ./$(date --date="yesterday" '+%Y/%m')/$(date --date="yesterday" '+%Y-%m-%d.csv')| sed 1d| tee /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
         ls -al /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
 
@@ -122,7 +123,9 @@ jobs:
         sleep 15
         export http_proxy="http://127.0.0.1:9091"
         export https_proxy="http://127.0.0.1:9091"
-        python $GITHUB_WORKSPACE/_resources/crdf.py -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
+        
+        pycrdfcli -a submit -i /tmp/$(date --date="yesterday" '+%Y-%m-%d.csv')
+        unset http_proxy https_proxy
 
 
     - name: Submit to Spamhaus
