@@ -1,5 +1,0 @@
-csvkit
-requests
-w3lib
-validators
-jmespath

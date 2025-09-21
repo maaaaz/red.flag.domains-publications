@@ -1,3 +1,0 @@
-requests
-w3lib
-validators

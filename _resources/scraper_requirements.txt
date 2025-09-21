@@ -1,5 +1,0 @@
-cymruwhois
-requests
-beautifulsoup4
-lxml
-csvkit
