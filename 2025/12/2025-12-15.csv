@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"annulation-banquepostale.fr","172.67.138.109","13335","172.67.128.0/20","CLOUDFLARENET, US","US"
+"carte-remboursement.fr","151.247.192.246","16276","151.247.192.0/24","OVH, FR","AE"
+"casinozers.fr","84.32.84.32","47583","84.32.84.0/24","AS-HOSTINGER, CY","LT"
+"mondialrelay-suivi.fr","45.152.162.165","200019","45.152.162.0/24","ALEXHOST, MD","DE"
+"opposition-postale.fr","104.21.49.241","13335","104.21.48.0/20","CLOUDFLARENET, US","US"
+"rgtickets.fr","38.19.202.28","9186","38.19.200.0/22","ONI Lisbon, Portugal., PT","US"
+"wise-bank.fr","217.160.0.34","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
