@@ -1,0 +1,4 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"app-societe-generale.fr","","","","",""
+"stancefrance.fr","104.21.94.44","13335","104.21.80.0/20","CLOUDFLARENET, US","US"
+"stussypullfrance.fr","5.157.59.45","41564","5.157.59.0/24","AS41564, GB","SC"
