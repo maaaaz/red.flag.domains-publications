@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"cpam-angouleme.fr","","","","",""
+"emailing-ameli.fr","","","","",""
+"laiglon-france.fr","213.186.33.5","16276","213.186.32.0/19","OVH, FR","FR"
+"leboncoinsecurise.fr","84.32.84.32","47583","84.32.84.0/24","AS-HOSTINGER, CY","LT"
+"marksandspencers.fr","104.21.77.54","13335","104.21.64.0/20","CLOUDFLARENET, US","US"
+"mondial-relay-info.fr","217.160.0.230","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"vejasoldes.fr","104.21.6.51","13335","104.21.0.0/20","CLOUDFLARENET, US","US"
