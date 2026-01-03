@@ -1,0 +1,7 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"airforce1-nike.fr","172.67.197.65","13335","172.67.192.0/20","CLOUDFLARENET, US","US"
+"ameli-espace-client.fr","223.29.226.117","213441","223.29.226.0/24","SLAYER-AS, GB","PK"
+"ameli-support.fr","185.98.139.187","210403","185.98.139.0/24","LWS, FR","FR"
+"colismondialrelay.fr","45.152.162.238","200019","45.152.162.0/24","ALEXHOST, MD","DE"
+"mutualite-francaise-finistere-morbihan.fr","195.201.69.223","24940","195.201.0.0/16","HETZNER-AS, DE","DE"
+"nikefreerun.fr","172.67.188.90","13335","172.67.176.0/20","CLOUDFLARENET, US","US"
