@@ -1,0 +1,5 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"casinozer-france1.fr","84.32.84.32","47583","84.32.84.0/24","AS-HOSTINGER, CY","LT"
+"chateau-versailles.fr","213.186.33.5","16276","213.186.32.0/19","OVH, FR","FR"
+"meindl-france.fr","","","","",""
+"thenorthfacefrance.fr","104.21.21.209","13335","104.21.16.0/20","CLOUDFLARENET, US","US"
