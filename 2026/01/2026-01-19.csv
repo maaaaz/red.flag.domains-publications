@@ -1,0 +1,6 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"admin-carrefour.fr","198.185.159.144","53831","198.185.159.0/24","SQUARESPACE, US","US"
+"auchanretailagro.fr","46.30.211.38","51468","46.30.208.0/21","ONECOM, DK","DK"
+"groupe-laredoute.fr","84.32.84.32","47583","84.32.84.0/24","AS-HOSTINGER, CY","LT"
+"urssaf-verification.fr","72.60.93.195","47583","72.60.88.0/21","AS-HOSTINGER, CY","LT"
+"wanado0o.fr","84.32.84.32","47583","84.32.84.0/24","AS-HOSTINGER, CY","LT"
