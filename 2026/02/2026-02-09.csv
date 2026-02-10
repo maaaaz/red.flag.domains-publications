@@ -1,0 +1,7 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"birk-outlet-store.fr","217.160.0.239","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"lyon-metro-e.fr","195.201.69.223","24940","195.201.0.0/16","HETZNER-AS, DE","DE"
+"ma-carte-vitale.fr","158.94.209.86","202412","158.94.209.0/24","OMEGATECH-AS, SC","TR"
+"permisdeconduire-gov.fr","","","","",""
+"pharmacieducentre-marly.fr","","","","",""
+"renouv-carte-vitale.fr","158.94.209.86","202412","158.94.209.0/24","OMEGATECH-AS, SC","TR"
