@@ -1,0 +1,5 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"portail-choruspro-facturation.fr","104.21.93.238","13335","104.21.80.0/20","CLOUDFLARENET - Cloudflare, Inc., US","US"
+"sig-labanquepostale.fr","185.208.158.13","42624","185.208.158.0/24","SWISSNETWORK02, SC","SC"
+"tupperwares.fr","","","","",""
+"xn--paiementscurisleboncoin-jccf.fr","76.223.105.230","16509","76.223.96.0/20","AMAZON-02 - Amazon.com, Inc., US","US"
