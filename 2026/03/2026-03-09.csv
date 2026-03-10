@@ -1,0 +1,6 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"bracelet-swarovski-bijoux.fr","23.227.38.65","13335","23.227.38.0/23","CLOUDFLARENET - Cloudflare, Inc., US","CA"
+"espace-foot.fr","172.67.176.122","13335","172.67.176.0/20","CLOUDFLARENET - Cloudflare, Inc., US","US"
+"lucky8enligne.fr","","","","",""
+"procedure-labanquepostale.fr","","","","",""
+"snapchats.fr","192.0.78.24","2635","192.0.78.0/24","AUTOMATTIC - Automattic, Inc, US","US"
