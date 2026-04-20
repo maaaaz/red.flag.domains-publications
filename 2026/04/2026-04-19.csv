@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"aritziafr.fr","172.67.191.84","13335","172.67.176.0/20","CLOUDFLARENET - Cloudflare, Inc., US","US"
+"clickvinted.fr","217.160.0.117","8560","217.160.0.0/16","IONOS-AS This is the joint network for IONOS, Fasthosts, Arsys, 1&1 Mail and Media and 1&1 Telecom. Formerly known as 1&1 Internet SE., DE","DE"
+"cpam-service.fr","62.171.147.158","51167","62.171.146.0/23","CONTABO, DE","DE"
+"dsr-sivinterieurgouv.fr","","","","",""
+"dsrinterieurgouv.fr","","","","",""
+"monbilletfrancais.fr","216.198.79.1","16509","216.198.79.0/24","AMAZON-02 - Amazon.com, Inc., US","US"
+"vinted-client.fr","185.230.63.107","58182","185.230.63.0/24","WIX_COM, IL","IL"
