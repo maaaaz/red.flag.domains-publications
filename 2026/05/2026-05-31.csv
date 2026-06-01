@@ -1,0 +1,8 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"amazondash.fr","0.0.0.0","NA","NA","NA",""
+"antaai.fr","104.21.27.60","13335","104.21.16.0/20","CLOUDFLARENET - Cloudflare, Inc., US","US"
+"bourso-assurance.fr","45.87.43.12","62068","45.87.43.0/24","SpectraIP - SpectraIP B.V., NL","NL"
+"cartierfrance.fr","172.67.214.120","13335","172.67.208.0/20","CLOUDFLARENET - Cloudflare, Inc., US","US"
+"geox-france.fr","196.247.144.11","48950","196.247.144.0/24","GLOBALCOLOCATION - Global Custom Data Limited, GB","SC"
+"reelson-fr.fr","","","","",""
+"securiserecharge.fr","92.113.18.238","47583","92.113.16.0/21","AS-HOSTINGER - Hostinger International Limited, CY","UA"
