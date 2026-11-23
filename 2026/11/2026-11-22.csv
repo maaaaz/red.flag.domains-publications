@@ -1,0 +1,5 @@
+"fqdn","ip","asn","ip_prefix","owner","cc"
+"casinolumiere.fr","51.91.236.255","16276","51.91.0.0/16","OVH - OVH SAS, FR","FR"
+"critair-france.fr","","","","",""
+"getrecharge.fr","","","","",""
+"service-oppofrance.fr","217.160.0.141","8560","217.160.0.0/16","IONOS-AS - IONOS SE, DE","DE"
